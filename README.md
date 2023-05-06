@@ -23,7 +23,8 @@ Ejercicios básicos
 
 	 NOTA: es más que probable que tenga que usar Python, Octave/MATLAB u otro programa semejante para
 	 hacerlo. Se valorará la utilización de la biblioteca matplotlib de Python.
-> Haciendo zoom de la señal de prueba.wav sobre los primeros 30 ms (donde se percibe la vocal 'a') encontramos los siguientes resultados para la autocorrelación de la señal:
+> Haciendo zoom de la señal de prueba.wav sobre los primeros 30 ms (donde se percibe la vocal 'a') encontramos los siguientes resultados para la autocorrelación de la señal, destacando la visualización del primer máximo secundario sobre la muestra #380 aproximadamente:
+> 
 > ![image](https://user-images.githubusercontent.com/125367047/236637056-2f0bc3be-bd01-4faa-86b6-692cbb8e849b.png)
 
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
