@@ -27,6 +27,9 @@ Usage:
 Options:
     -h, --help  Show this screen
     --version   Show the version of the project
+    -1 FLOAT, --thresh_pot=FLOAT  Llindar/umbral de l'autocorrelació normalitzada [default: -23.7]
+    -2 FLOAT, --thresh_r1norm=FLOAT  Llindar/umbral de l'autocorrelació normalitzada [default: 0.826]
+    -3 FLOAT, --thresh_rmaxnorm=FLOAT  Llindar/umbral de l'autocorrelació normalitzada [default: 0.359]
 
 Arguments:
     input-wav   Wave file with the audio signal
@@ -47,6 +50,10 @@ int main(int argc, const char *argv[]) {
 	std::string input_wav = args["<input-wav>"].asString();
 	std::string output_txt = args["<output-txt>"].asString();
 
+  float t_pot = atof(args["--thresh_pot"].asString().c_str());
+  float t_r1norm = atof(args["--thresh_r1norm"].asString().c_str());
+  float t_rmaxnorm = atof(args["--thresh_rmaxnorm"].asString().c_str());
+
   // Read input sound file
   unsigned int rate;
   vector<float> x;
@@ -59,7 +66,7 @@ int main(int argc, const char *argv[]) {
   int n_shift = rate * FRAME_SHIFT;
 
   // Define analyzer
-  PitchAnalyzer analyzer(n_len, rate, PitchAnalyzer::RECT, 50, 500);
+  PitchAnalyzer analyzer(n_len, rate, t_pot, t_r1norm, t_rmaxnorm, PitchAnalyzer::RECT, 50, 500);
 
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,

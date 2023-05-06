@@ -12,10 +12,16 @@ namespace upc {
 
     for (unsigned int l = 0; l < r.size(); ++l) {
   		/// \TODO Compute the autocorrelation r[l]
+      /// \DONE 
+      /// 1. inicializamos a 0
+      /// 2. acumular valores
+      /// 3. dividimos por la longitud
+
       r[l] = 0;
       for(unsigned int n=l; n<x.size(); n++){
         r[l] += x[n]*x[n-l];
       }
+      r[l] /= x.size();
       
     }
 
@@ -32,6 +38,7 @@ namespace upc {
     switch (win_type) {
     case HAMMING:
       /// \TODO Implement the Hamming window
+      /// \DONE Aplicamos la fórmula
       for(unsigned int i=0; i<frameLen; i++){
         window[i] = 0.54 - 0.46*cos((2*M_PI*i)/(frameLen-1));
       }
@@ -58,7 +65,14 @@ namespace upc {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
-    return true;
+    /// \DONE 
+    /// Falta cambiar numeros
+    
+    if(pot < thresh_pot || r1norm < thresh_r1norm || rmaxnorm < thresh_rmaxnorm)
+      return true; // Significa que esta dentro de umbrales, entonces es silencio o sorda
+    else
+      return false;
+    
   }
 
   float PitchAnalyzer::compute_pitch(vector<float> & x) const {
@@ -74,22 +88,26 @@ namespace upc {
     //Compute correlation
     autocorrelation(x, r);
 
-    vector<float>::const_iterator iR = r.begin(), iRMax = iR;
+    vector<float>::const_iterator iR = r.begin(), iRMax = iR + npitch_min;
 
     /// \TODO 
 	/// Find the lag of the maximum value of the autocorrelation away from the origin.<br>
 	/// Choices to set the minimum value of the lag are:
 	///    - The first negative value of the autocorrelation.
 	///    - The lag corresponding to the maximum value of the pitch.
+   /// \DONE
+  ///prova
     ///	   .
 	/// In either case, the lag should not exceed that of the minimum value of the pitch.
+  
 
-  for(iR = r.begin(); iR < r.end(); iR++){
-      if(iR>iRMax){
-        iRMax= iR;
+  for(iRMax = iR = r.begin() + npitch_min; iR< r.begin()+ npitch_max; iR++){
+      if(*iR>*iRMax){
+        iRMax = iR;
       }
   }
 
+ 
 
     unsigned int lag = iRMax - r.begin();
 
@@ -98,7 +116,7 @@ namespace upc {
     //You can print these (and other) features, look at them using wavesurfer
     //Based on that, implement a rule for unvoiced
     //change to #if 1 and compile
-#if 0
+#if 1
     if (r[0] > 0.0F)
       cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
 #endif
