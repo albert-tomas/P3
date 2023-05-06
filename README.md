@@ -14,6 +14,8 @@ Ejercicios básicos
   `get_pitch`.
 
    * Complete el cálculo de la autocorrelación e inserte a continuación el código correspondiente.
+> Mostramos a continuación el código de cálculo de la autocorrelación:
+> ![image](https://user-images.githubusercontent.com/125367047/236632472-3c1a4d5a-b74b-4132-8358-eafd174d7e22.png)
 
    * Inserte una gŕafica donde, en un *subplot*, se vea con claridad la señal temporal de un segmento de
      unos 30 ms de un fonema sonoro y su periodo de pitch; y, en otro *subplot*, se vea con claridad la
