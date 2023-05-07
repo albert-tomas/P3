@@ -81,9 +81,12 @@ Ejercicios básicos
      
 		Aunque puede usar el propio Wavesurfer para obtener la representación, se valorará
 	 	el uso de alternativas de mayor calidad (particularmente Python).
-> A continuación vemos la estimación de pitch que realiza wavesurfer, además de la señal utilizada prueba.wav.
+> A continuación vemos la estimación de pitch calculada mediante el siguiente código, en el subplot central la estimación que realiza wavesurfer, y además vemos la señal utilizada prueba.wav.
 > 
-> ![image](https://user-images.githubusercontent.com/125367047/236671544-52412e17-e152-44ea-ad1a-81a5dc871071.png)
+> ![image](https://user-images.githubusercontent.com/125367047/236677735-913e5942-fa07-44c2-ab65-842a293e69bc.png)
+> 
+> ![image](https://user-images.githubusercontent.com/125367047/236677816-1c2334dd-cae0-40d7-8311-7880bf505f5e.png)
+
 
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
@@ -104,9 +107,9 @@ Ejercicios de ampliación
 
   * Inserte un *pantallazo* en el que se vea el mensaje de ayuda del programa y un ejemplo de utilización
     con los argumentos añadidos.
-> A continuación mostramos los argumentos añadidos con sus valores por default:
+> A continuación mostramos las diferentes opciones del programa y sus respectivos valores default:
 > 
-> <img width="602" alt="image" src="https://user-images.githubusercontent.com/125367047/236673215-0b69632b-8516-42dc-acd2-22d8c0d45730.png">
+> ![image](https://user-images.githubusercontent.com/125367047/236677868-30b91fef-ae6f-4dc0-b210-f432d6627b0d.png)
 
 - Implemente las técnicas que considere oportunas para optimizar las prestaciones del sistema de estimación
   de pitch.
