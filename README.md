@@ -15,6 +15,7 @@ Ejercicios básicos
 
    * Complete el cálculo de la autocorrelación e inserte a continuación el código correspondiente.
 > Mostramos a continuación el código de cálculo de la autocorrelación:
+> 
 > ![image](https://user-images.githubusercontent.com/125367047/236632472-3c1a4d5a-b74b-4132-8358-eafd174d7e22.png)
 
    * Inserte una gŕafica donde, en un *subplot*, se vea con claridad la señal temporal de un segmento de
@@ -29,8 +30,14 @@ Ejercicios básicos
 
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
+> Localizado el primer máximo secundario anteriormente, añadimos el código correspondiente:
+> 
+> <img width="443" alt="image" src="https://user-images.githubusercontent.com/125367047/236637965-29ce3aea-3416-483b-9feb-b04b6e5c4f1d.png">
 
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
+> Determinamos el tono en base a unos umbrales de decisión, donde en función de si la autocorrelación y la potencia se encuentran dentro o fuera del rango, definiremos que hay silencio o voz.
+> 
+> <img width="592" alt="image" src="https://user-images.githubusercontent.com/125367047/236668396-258e15e9-2b67-4591-83ba-2f1c34778a0d.png">
 
    * Puede serle útil seguir las instrucciones contenidas en el documento adjunto `código.pdf`.
 
@@ -49,6 +56,24 @@ Ejercicios básicos
 
 	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
+> Empleamos la función cout que permite mostrar por consola la información de la potencia, la autorrelación en 1 y la autocorrelación del pitch, para cada una de las tramas.
+> 
+> <img width="451" alt="image" src="https://user-images.githubusercontent.com/125367047/236668716-e2ab8445-d3a7-4bb4-8e02-9973bc76c22d.png">
+> 
+> 
+> A continuacion, escribimos distintos ficheros .out para más adelante, poder observar las funciones r(lag)/r(0) y r(1)/r(0) mediante wavesurfer. Utilizamos cut para quedarnos con las columnas que nos interesan para cada caso:
+> 
+> <img width="602" alt="image" src="https://user-images.githubusercontent.com/125367047/236669298-6aadaa86-7204-468d-b1e4-656a0c1b743d.png">
+> 
+> 
+> Los diferentes subplots representados son (de arriba abajo) rmaxnorm, r1norm, pot_r, y finalmente la señal que hemos utilizado prueba.wav.
+> 
+> ![image](https://user-images.githubusercontent.com/125367047/236670271-16c3582d-3166-4a22-81b6-1957fc9b3c47.png)
+> 
+> Obervamos que donde tenemos segmentos de voz (sonoros), ambas autocorrelaciones tienen un valor cercano a 1. Esto se debe a que las muestras cercanas de las tramas de voz son parecidas entre ellas. A partir de estas gráficas encontramos los valores iniciales para nuestros umbrales, que modificaremos más adelante al optimizar los parametros de detección de pitch.
+
+
+
 
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
@@ -56,7 +81,10 @@ Ejercicios básicos
      
 		Aunque puede usar el propio Wavesurfer para obtener la representación, se valorará
 	 	el uso de alternativas de mayor calidad (particularmente Python).
-  
+  > A continuación vemos la estimación de pitch que realiza wavesurfer, además de la señal utilizada prueba.wav.
+  > 
+  > ![image](https://user-images.githubusercontent.com/125367047/236671544-52412e17-e152-44ea-ad1a-81a5dc871071.png)
+
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
