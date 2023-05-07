@@ -131,7 +131,21 @@ Ejercicios de ampliación
   También se valorará la realización de un estudio de los parámetros involucrados. Por ejemplo, si se opta
   por implementar el filtro de mediana, se valorará el análisis de los resultados obtenidos en función de
   la longitud del filtro.
+> En nuestro caso, hemos aplicado una técnica de center-clipping a nivel de preprocesado y posteriormente un filtro de mediana.
+> Al implementar center-clipping, definimos un nuevo umbral que hemos ajustado a un valor óptimo de 0.0005. Con esta técnica eliminamos o ponemos a zero todos los valores de los instantes de tiempo que hemos detectado como silencio, con esto lo que estamos consiguiendo es una señal robusta ante la presencia de ruido. El código implementado queda de la siguiente forma:
 > 
+> <img width="473" alt="image" src="https://user-images.githubusercontent.com/125367047/236673709-dc1bfa2b-ded7-45c6-8b3b-e7bb03c71b1c.png">
+> 
+> La segunda técnica aplicada se trata de un filtro de mediana, donde cogemos el entorno de cada una de las muestras (en nuestro caso únicamente la muestra anterior y la muestra posterior al tener una longitud = 3) y comprobamos cual es su valor medio.
+> 
+> <img width="525" alt="image" src="https://user-images.githubusercontent.com/125367047/236674953-e0cf66ca-acdf-49a1-a107-48207ac0236a.png">
+> 
+> Tras haber aplicado las anteriores mejoras comentadas, obtenemos un resultado final de 90.22% de acierto.
+> 
+> <img width="369" alt="image" src="https://user-images.githubusercontent.com/125367047/236675399-87a9f4b8-9aed-4979-a454-83e33e1ceb65.png">
+
+
+
    
 
 Evaluación *ciega* del estimador
