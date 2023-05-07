@@ -38,7 +38,7 @@ namespace upc {
     switch (win_type) {
     case HAMMING:
       /// \TODO Implement the Hamming window
-      /// \DONE Aplicamos la fórmula
+      /// \DONE Aplicamos la fórmula de la ventana de Hamming
       for(unsigned int i=0; i<frameLen; i++){
         window[i] = 0.54 - 0.46*cos((2*M_PI*i)/(frameLen-1));
       }
@@ -65,13 +65,12 @@ namespace upc {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
-    /// \DONE 
-    /// Falta cambiar numeros
+    /// \DONE Definimos la norma que decide si hay voz o no, a partir de unos nuevos umbrales generados con los valores de potencia y autocorrelación.
+
     
-    if(pot < thresh_pot || r1norm < thresh_r1norm || rmaxnorm < thresh_rmaxnorm)
-      return true; // Significa que esta dentro de umbrales, entonces es silencio o sorda
-    else
-      return false;
+    if(rmaxnorm>thresh_rmaxnorm && r1norm > thresh_r1norm && pot > thresh_pot) 
+      return false; // Dentro de los umbrales establecidos, será silencio o sorda.
+    return true; // Fuera de los umbrales establecidos, será voz o sonora.
     
   }
 
@@ -95,8 +94,7 @@ namespace upc {
 	/// Choices to set the minimum value of the lag are:
 	///    - The first negative value of the autocorrelation.
 	///    - The lag corresponding to the maximum value of the pitch.
-   /// \DONE
-  ///prova
+   /// \DONE Encontrado el primer máximo secundario (excluyendo el que aparece en el origen), encontrando así el pitch.
     ///	   .
 	/// In either case, the lag should not exceed that of the minimum value of the pitch.
   
@@ -117,13 +115,14 @@ namespace upc {
     //Based on that, implement a rule for unvoiced
     //change to #if 1 and compile
 #if 1
-    if (r[0] > 0.0F)
-      cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
+    //if (r[0] > 0.0F)
+      //cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
 #endif
-    
     if (unvoiced(pot, r[1]/r[0], r[lag]/r[0]))
       return 0;
-    else
+    else{
+      cout << ((float) samplingFreq/(float) lag) << endl;
       return (float) samplingFreq/(float) lag;
+    }    
   }
 }
