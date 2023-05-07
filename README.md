@@ -35,11 +35,12 @@ Ejercicios básicos
 > <img width="443" alt="image" src="https://user-images.githubusercontent.com/125367047/236637965-29ce3aea-3416-483b-9feb-b04b6e5c4f1d.png">
 
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
-> Determinamos el tono en base a unos umbrales de decisión, donde en función de si la autocorrelación y la potencia se encuentran dentro o fuera del rango, definiremos que hay silencio o voz.
-> 
-> <img width="592" alt="image" src="https://user-images.githubusercontent.com/125367047/236668396-258e15e9-2b67-4591-83ba-2f1c34778a0d.png">
 
    * Puede serle útil seguir las instrucciones contenidas en el documento adjunto `código.pdf`.
+> Determinamos el tono en base a unos umbrales de decisión, donde en función de si la autocorrelación y la potencia se encuentran dentro o fuera del rango, definiremos que hay silencio o voz.
+> 
+> <img width="596" alt="image" src="https://user-images.githubusercontent.com/125367047/236673454-17d1f37c-11d3-4a75-bb40-f8f6c6a12aa4.png">
+
 
 - Una vez completados los puntos anteriores, dispondrá de una primera versión del estimador de pitch. El 
   resto del trabajo consiste, básicamente, en obtener las mejores prestaciones posibles con él.
@@ -74,20 +75,22 @@ Ejercicios básicos
 
 
 
-
-      - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
+	- Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
 		ilustrativa del resultado de ambos estimadores.
      
 		Aunque puede usar el propio Wavesurfer para obtener la representación, se valorará
 	 	el uso de alternativas de mayor calidad (particularmente Python).
-  > A continuación vemos la estimación de pitch que realiza wavesurfer, además de la señal utilizada prueba.wav.
-  > 
-  > ![image](https://user-images.githubusercontent.com/125367047/236671544-52412e17-e152-44ea-ad1a-81a5dc871071.png)
+> A continuación vemos la estimación de pitch que realiza wavesurfer, además de la señal utilizada prueba.wav.
+> 
+> ![image](https://user-images.githubusercontent.com/125367047/236671544-52412e17-e152-44ea-ad1a-81a5dc871071.png)
 
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
+> Con los valores de threshold ya "maximizados" nuestro sistema de decisión tendrá un acierto del 89.57%, resultado previo a aplicar cualquier tipo de pre/postprocesado.
+> 
+> <img width="378" alt="image" src="https://user-images.githubusercontent.com/125367047/236673291-acce316d-593a-4f1a-89ec-d8b24fbb3002.png">
 
 Ejercicios de ampliación
 ------------------------
@@ -101,6 +104,9 @@ Ejercicios de ampliación
 
   * Inserte un *pantallazo* en el que se vea el mensaje de ayuda del programa y un ejemplo de utilización
     con los argumentos añadidos.
+> A continuación mostramos los argumentos añadidos con sus valores por default:
+> 
+> <img width="602" alt="image" src="https://user-images.githubusercontent.com/125367047/236673215-0b69632b-8516-42dc-acd2-22d8c0d45730.png">
 
 - Implemente las técnicas que considere oportunas para optimizar las prestaciones del sistema de estimación
   de pitch.
@@ -125,6 +131,7 @@ Ejercicios de ampliación
   También se valorará la realización de un estudio de los parámetros involucrados. Por ejemplo, si se opta
   por implementar el filtro de mediana, se valorará el análisis de los resultados obtenidos en función de
   la longitud del filtro.
+> 
    
 
 Evaluación *ciega* del estimador
